@@ -23,9 +23,9 @@ def checkGoods () :
         if len(btn) == 0: #재고 없음이 풀림
             smtp_server = "smtp.naver.com"
             port = 587
-            EMAIL_ADDR = "네이버메일"
-            EMAIL_PASSWORD = "네이버메일암호"
-            EMAIL_TO = "메시지보낼이메일"
+            EMAIL_ADDR = ""
+            EMAIL_PASSWORD = ""
+            EMAIL_TO = "lunastratos@gmail.com"
             message = "ss"
 
             smtp = smtplib.SMTP(smtp_server, 587)
