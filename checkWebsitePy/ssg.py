@@ -4,10 +4,11 @@ import schedule
 from email.mime.text import MIMEText
 import smtplib, ssl
 
+# SSGDFS == 딥디크 플레르 드 뽀
 def checkGoods () :
     #신세계
     goodsCode1 = "103988000120" # 딥디크
-    goodsCode2 = "103988000073"
+    goodsCode2 = "103988000100" # 플레르 드 뽀 바디밤
 
     url = "https://www.ssgdfs.com/kr/goos/view/DIPTYQUE/beauty/perfume/"+goodsCode2
     response = requests.get(url)
@@ -16,8 +17,8 @@ def checkGoods () :
         soup = BeautifulSoup(html, 'html.parser')
         # 재고 없음 버튼찾기
         btn = soup.select('.btnSSG.btnL')
-        print("찾은 버튼 갯수" , btn)
-        print(len(btn))
+        # print("찾은 버튼 갯수" , btn)
+        print("찾은 버튼 갯수 ", len(btn))
 
         if len(btn) == 0: #재고 없음이 풀림
             print("재고있음!")
@@ -37,7 +38,7 @@ def checkGoods () :
             msg = MIMEText('본문 테스트 메시지')
             msg['From'] = EMAIL_ADDR
             msg['To'] = EMAIL_ADDR
-            msg['Subject'] = '플레르 드 뽀 입고 '
+            msg['Subject'] = '플레르 바디밤 입고 '
             smtp.sendmail(EMAIL_ADDR, EMAIL_TO, msg.as_string())
 
 print("실행되었습니다.")

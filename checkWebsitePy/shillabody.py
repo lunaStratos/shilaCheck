@@ -4,7 +4,7 @@ import schedule
 from email.mime.text import MIMEText
 import smtplib, ssl
 
-# 신라면세점 == 딥디크 플레르 드 뽀 
+# 신라면세점 == 딥디크 플레르 드 뽀 바디밤용 
 def checkGoods () :
     goodsCode1 = "4999357"
     goodsCode2 = "5046751" #딥디크
