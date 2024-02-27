@@ -12,15 +12,15 @@ def checkGoods () :
 
     url = "https://www.ssgdfs.com/kr/goos/view/DIPTYQUE/beauty/perfume/"+goodsCode2
     response = requests.get(url)
+
     if response.status_code:
         html = response.text
         soup = BeautifulSoup(html, 'html.parser')
-        # 재고 없음 버튼찾기
-        btn = soup.select('.btnSSG.btnL')
-        # print("찾은 버튼 갯수" , btn)
-        print("찾은 버튼 갯수 ", len(btn))
+        # 장바구니 버튼찾기
+        btn = soup.select('.btIco.icCart')
+        print("장바구니 버튼 갯수 ", len(btn))
 
-        if len(btn) == 0: #재고 없음이 풀림
+        if len(btn) != 0: # 재고 없음이 풀림
             print("재고있음!")
             smtp_server = "smtp.naver.com"
             port = 587
@@ -44,7 +44,7 @@ def checkGoods () :
 print("실행되었습니다.")
 
 checkGoods()
-schedule.every(5).minutes.do(checkGoods)
+schedule.every(1).minutes.do(checkGoods)
 
 while True:
     schedule.run_pending()

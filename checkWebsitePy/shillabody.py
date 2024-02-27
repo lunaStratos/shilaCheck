@@ -18,7 +18,6 @@ def checkGoods () :
 
         # 재고 없음 버튼찾기 
         btn = soup.select('div.pro_detail > div.pro_top_btnarea > div.btn_wrap > button.btn_grade1.type3')
-        # print("찾은 버튼 갯수" , btn)
         print("찾은 버튼 갯수 ", len(btn))
 
         if len(btn) == 0: #재고 없음이 풀림
@@ -42,8 +41,7 @@ def checkGoods () :
             smtp.sendmail(EMAIL_ADDR, EMAIL_TO, msg.as_string())
 
 print("실행되었습니다.")
-# schedule.every(30).minutes.do(checkGoods)
-schedule.every(5).minutes.do(checkGoods)
-
+schedule.every(1).minutes.do(checkGoods)
+checkGoods()
 while True:
     schedule.run_pending()

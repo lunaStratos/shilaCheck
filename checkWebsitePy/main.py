@@ -42,7 +42,6 @@ def checkGoods () :
             smtp.sendmail(EMAIL_ADDR, EMAIL_TO, msg.as_string())
 
 print("실행되었습니다.")
-# schedule.every(30).minutes.do(checkGoods)
 schedule.every(5).minutes.do(checkGoods)
 
 while True:

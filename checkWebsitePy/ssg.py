@@ -15,12 +15,12 @@ def checkGoods () :
     if response.status_code:
         html = response.text
         soup = BeautifulSoup(html, 'html.parser')
-        # 재고 없음 버튼찾기
-        btn = soup.select('.btnSSG.btnL')
+        # 장바구니 버튼찾기
+        btn = soup.select('.btIco.icCart')
         # print("찾은 버튼 갯수" , btn)
         print("찾은 버튼 갯수 ", len(btn))
 
-        if len(btn) == 0: #재고 없음이 풀림
+        if len(btn) != 0:  # 재고 없음이 풀림
             print("재고있음!")
             smtp_server = "smtp.naver.com"
             port = 587
